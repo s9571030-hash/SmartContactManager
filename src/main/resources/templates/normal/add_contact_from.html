@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+	
+<head>
+<meta charset="UTF-8" />
+<title>Home page</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+				<h1 class="text-center">Add Contact</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form method="POST" 
+							th:action="@{/user/process-contact}"
+							th:object="${contact}"
+						    enctype="multipart/form-data"
+								 class="mt-2">
+								
+								<!-- firstName field -->
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-plus"></i>
+										</div>
+									</div>
+									<input type="text" id="firstname" name="name"
+										placeholder="Enter here"
+										class=form-control
+										required="required" />
+								</div>
+
+
+								<!--  end offirstName field -->
+								<!--  second Name field -->
+								<div class="input-group mb-3 ">
+									<div class="input-group-prepend">
+										<div class="input-group-text  ">
+											<i class="fas fa-user-alt"></i>
+										</div>
+									</div>
+									<input type="text" id="secendname" name="secname"
+										placeholder="Enter Nick name here "
+										 class=form-control
+										 required="required" />
+								</div>
+								<!-- phone -->
+
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fas fa-phone"></i>
+										</div>
+									</div>
+									<input required min="10" type="number" id="phone" name="phone"
+										placeholder="Enter Mobile number here "
+										 class=form-control />
+								</div>
+								<!-- email -->
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">@</div>
+									</div>
+									<input type="email" id="email" name="email"
+										placeholder="Enter Your persional emailid here "
+										 class=form-control
+										 required="required" />
+								</div>
+								<!-- work field -->
+
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text  ">
+											<i class="fas fa-briefcase"></i>
+										</div>
+									</div>
+									<input type="text" id="work" name="work"
+										placeholder="Enter work here " 
+										class=form-control
+										required="required"
+										 />
+								</div>
+								<!--   Content Description  -->
+								<br>
+								<div class="form-group-mt-3">
+									<textarea id="mytextarea" name="description"
+										placeholder="Enter your contact description here"
+										 class="form-control" rows="10"></textarea>
+
+								</div>
+								<!-- contact image -->
+                                      <br>
+								<div class="custom-file">
+									<input type="file" name="imageFile"/>
+								</div>
+								<div class="container text-center">
+									<button class="btn btn-outline-primary">Save Contact</button>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<script src="https://cdn.tiny.cloud/1/mufctujzd1dfzrlbtmxayxde4ijts9d7vas818057yj4smmw/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+       <script>
+  tinymce.init({
+    selector: '#mytextarea' // Yeh aapke page ke saare textarea ko editor bana dega
+  });
+</script>
+
+<script>
+		$(document).ready(()=>{
+
+       $(".item").removeClass("active")
+	   $("#add-link").addClass("active")
+		
+	});
+		
+		
+		
+	</script>
+
+	</section>
+</body>
+</html>
